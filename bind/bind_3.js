@@ -49,8 +49,6 @@ const x1 = add3(200)
 const x2 = x1.bind(this, 100)
 console.log(x2());
 
-
-
 const res = a => b  => (a + b)
 console.log(res(90)(100));
 const z1 = res(200)

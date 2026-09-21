@@ -24,3 +24,15 @@ const add2 = addOne.bind(this, 20)
 const bindAdd = add2()
 console.log(bindAdd(2));
 
+   function newMul(a){
+    return function(b){
+        return a*b
+    }
+   }
+
+   const mul = newMul(10)
+   const mulBy5 = mul(5)
+   console.log(mulBy5);
+   
+
+
