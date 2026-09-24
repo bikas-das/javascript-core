@@ -6,7 +6,6 @@ function func1() {
         setTimeout(() => {
             resolve('hi from func-1')
             console.log('inside func--1');
-
         }, 100);
 
     })
