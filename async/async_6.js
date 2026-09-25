@@ -28,5 +28,11 @@ async function resolvePromise2() {
 
 }
 
+function independent() {
+    console.log('i am an independent func...');
+
+}
+
 resolvePromise1()
 resolvePromise2()
+independent()
