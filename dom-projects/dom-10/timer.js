@@ -12,15 +12,11 @@ let leadingSeconds = 0
 let leadingMinutes = 0
 let leadingHours = 0
 
+//timer variable
 let timerInterval = null
 let timerStatus = 'stopped'
 
-
-
-
 //stop watch function
-
-
 function stopWatch() {
     seconds++
 
@@ -52,15 +48,15 @@ function stopWatch() {
         leadingHours = hours
     }
 
-    let displayTimer = document.getElementById('timer').innerText = `${leadingHours} : ${leadingMinutes} : ${leadingSeconds}`
+    document.getElementById('timer').innerText = `${leadingHours} : ${leadingMinutes} : ${leadingSeconds}`
 }
-
-// window.setInterval(stopWatch, 1000)
 
 startStopBtn.addEventListener('click', () => {
     console.log('clicked...');
 
     if (timerStatus === 'stopped') {
+        console.log('play button ----> stopped...');
+
         timerInterval = window.setInterval(stopWatch, 1000)
         document.getElementById('startStopBtn').innerHTML = 'Pause'
         timerStatus = 'started'
@@ -76,17 +72,8 @@ resetBtn.addEventListener('click', () => {
     seconds = 0
     minutes = 0
     hours = 0
-
     document.getElementById('timer').innerHTML = '00:00:00'
 
 
 })
 
-resetBtn.addEventListener('click', () => {
-    window.clearInterval(timerInterval)
-    seconds = 0
-    minutes = 0
-    hours = 0
-    document.getElementById('timer').innerHTML = '00:00:00'
-
-})
