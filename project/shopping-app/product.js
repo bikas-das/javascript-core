@@ -11,7 +11,7 @@ let productData = [
     {
         id: 2,
         img: './images/shirt_2.jpg',
-        title: 'T Shirt',
+        title: 'Denim Shirt',
         descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
         amount: '$20',
         quantity: 0
@@ -19,7 +19,7 @@ let productData = [
     {
         id: 3,
         img: './images/shirt_3.jpg',
-        title: 'Denim Shirt',
+        title: 'T Shirt',
         descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
         amount: '$60',
         quantity: 0
@@ -51,7 +51,6 @@ let productData = [
 ]
 
 const container = document.querySelector('.container')
-console.log(container);
 
 let basket = []
 const loadProducts = () => {
@@ -73,15 +72,15 @@ const loadProducts = () => {
                     </div>
                     <div class="quantity-details">
 
-                        <svg class="increase" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        <svg onclick="increament(${id})" class="increase"  xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                             <path
                                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
                         </svg>
 
-                        <p>${quantity}</p>
+                        <p id="${id}">${quantity}</p>
 
-                        <svg class="decrease" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        <svg onclick="decreament(${id})" class="decrease" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
                         </svg>
@@ -95,6 +94,42 @@ const loadProducts = () => {
 
 loadProducts()
 
+const totalQuantity = document.querySelector('.quantity')
+
+const increament = (id) => {
+    const getOne = basket.find((d) => d.id === id)
+    if (getOne === undefined) {
+        basket.push({
+            id: id,
+            quantity: 1
+        })
+
+    } else {
+        getOne.quantity += 1;
+    }
+    updateQuantity(id)
+    calculateCartItems();
+}
+
+const decreament = (id) => {
+    const getOne = basket.find((d) => d.id === id)
+    if (getOne === undefined || getOne.quantity === 0) return;
+    getOne.quantity -= 1;
+    updateQuantity(id)
+    calculateCartItems();
+}
+
+const updateQuantity = (id) => {
+    const getOne = basket.find((d) => d.id === id)
+    document.getElementById(id).innerHTML = getOne.quantity;
+
+}
+
+const calculateCartItems = () => {
+    const totalItems = basket.map(data => data.quantity).reduce((x, y) => x + y, 0)
+    console.log(totalItems);
+    totalQuantity.innerHTML = totalItems;
+}
 
 
 
