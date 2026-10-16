@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="product.css">
+    <script src="product-data.js" defer></script>
+    <script src="cart.js" defer></script>
+
+    <style>
+        .cart-content {
+            width: 60%;
+            margin: 2em auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            align-items: center;
+        }
+
+        .img-container {
+            width: 80%;
+            display: flex;
+            gap: 4em;
+            border-radius: .7em;
+            position: relative;
+        }
+
+        .img-container img {
+            flex-basis: 20%;
+        }
+
+        .title {
+            white-space: nowrap;
+        }
+
+
+        .price {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .separator {
+            margin-top: 1em;
+            height: 7em;
+            border-right: 1px solid black;
+        }
+
+        nav li a {
+            text-decoration: none;
+        }
+
+        nav li a {
+            color: white;
+        }
+
+        .total-amount {
+            font-weight: 400;
+            font-size: 2rem;
+            position: relative;
+            top: 60px;
+            right: 50px;
+        }
+
+        .cross {
+            font-size: 2rem;
+            font-weight: 600;
+            width: 8rem;
+            position: absolute;
+            right: -3em;
+        }
+
+        .cross:hover {
+            color: red;
+            cursor: pointer;
+
+        }
+
+        .cross svg {
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 70px;
+            top: 10px;
+        }
+
+        .btn {
+            background: black;
+            color: white;
+            border-radius: .8em;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="product.html">Home</a></li>
+                <li><a>product details</a></li>
+            </ul>
+        </nav>
+        <div class="cart-item">
+
+            <a href="cart.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                </svg>
+            </a>
+
+            <div class="quantity">
+                0
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="no-data"></div>
+
+        <div class="cart-content">
+
+        </div>
+
+        <i class="bi bi-x-circle"></i>
+    </main>
+
+
+
+</body>
+
+</html>

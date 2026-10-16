@@ -1,61 +1,8 @@
 
-let productData = [
-    {
-        id: 1,
-        img: './images/shirt_1.jpg',
-        title: 'Casual Shirt',
-        descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
-        amount: '$40',
-        quantity: 0
-    },
-    {
-        id: 2,
-        img: './images/shirt_2.jpg',
-        title: 'Denim Shirt',
-        descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
-        amount: '$20',
-        quantity: 0
-    },
-    {
-        id: 3,
-        img: './images/shirt_3.jpg',
-        title: 'T Shirt',
-        descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
-        amount: '$60',
-        quantity: 0
-    },
-    {
-        id: 4,
-        img: './images/shirt_3.jpg',
-        title: 'Formal Shirt',
-        descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
-        amount: '$12',
-        quantity: 0
-    },
-    {
-        id: 5,
-        img: './images/shirt_4.jpg',
-        title: 'Cool Shirt',
-        descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
-        amount: '$88',
-        quantity: '0'
-    },
-    {
-        id: 6,
-        img: './images/shirt_5.jpg',
-        title: 'Casual Shirt',
-        descr: 'Lorem ipsum dolor dicta. Voluptas, molestias.',
-        amount: '$40',
-        quantity: 0
-    }
-]
-
 const container = document.querySelector('.container')
 
 // let basket = []
 let basket = JSON.parse(localStorage.getItem('data')) || [];
-console.log(basket);
-
 
 const loadProducts = () => {
     productData.map((data) => {
@@ -71,7 +18,7 @@ const loadProducts = () => {
 
                 <div class="price">
                     <div class="price-amt">
-                                            ${amount}
+                                           ₹${amount}
                     </div>
                     <div class="quantity-details">
 
@@ -119,15 +66,16 @@ const decreament = (id) => {
     const getOne = basket.find((d) => d.id === id)
     if (getOne === undefined || getOne.quantity === 0) return;
     getOne.quantity -= 1;
-    localStorage.setItem('data', JSON.stringify(basket))
+    basket = basket.filter((d) => d.quantity !== 0)
 
     updateQuantity(id)
+    localStorage.setItem('data', JSON.stringify(basket))
     calculateCartItems();
 }
 
 const updateQuantity = (id) => {
     const getOne = basket.find((d) => d.id === id)
-    document.getElementById(id).innerHTML = getOne.quantity;
+    document.getElementById(id).innerHTML = getOne === undefined ? 0 : getOne.quantity;
 
 }
 
