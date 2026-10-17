@@ -48,8 +48,9 @@ const loadProducts = () => {
 
         ` }).join("")
     } else {
+        cartContent.innerHTML = '';
         noData.innerHTML = `
-    <button class"btn"><a href="product.html">go to home<a/></button>`
+    <div class="btn"><a href="product.html">go to home<a/></div>`
     }
 }
 
@@ -90,14 +91,10 @@ const decreament = (id) => {
     basket = basket.filter((d) => d.quantity !== 0)
     localStorage.setItem('data', JSON.stringify(basket))
     loadProducts()
-
-
-
     calculateCartItems();
 }
 
 const updateQuantity = (id) => {
-
     const getOne = basket.find((d) => d.id === id)
     document.getElementById(id).innerHTML = getOne === undefined ? 0 : getOne.quantity;
 }
