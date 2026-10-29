@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .video-container {
+            height: 50vh;
+        }
+
+        #btn {
+            width: 7em;
+            height: 4em;
+            border-radius: 1em;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 1em;
+            margin-left: 6em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- <div class="video-container"> -->
+    <video class="video-container" controls autoplay loop>
+        <source src="./test.mp4">
+    </video>
+    <div class="btn-test">
+        <button id="btn"></button>
+    </div>
+    <!-- </div> -->
+
+
+    <script>
+
+        const video = document.querySelector('.video-container')
+        const btn = document.getElementById('btn')
+
+        btn.innerHTML = 'pause'
+
+        btn.addEventListener('click', () => {
+            if (btn.innerHTML === 'pause') {
+                btn.innerHTML = 'play'
+                video.pause()
+            } else {
+                btn.innerHTML = 'pause'
+                video.play()
+
+            }
+
+
+        })
+
+
+    </script>
+</body>
+
+</html>
